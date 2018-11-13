@@ -1,19 +1,27 @@
 {
-"name": "PocketBot",
-"version": "1.0.0",
-"description": "NodeJs server for PocketBot",
-"main": "index.js",
-"scripts": {
-"start": "node index.js"
-},
-"repository": {
-"type": "git",
-"url": "https://github.com/WhatMonday/NodeJs_server"
-},
-"author": "",
-"license": "",
-"bugs": {
-"url": ""
-},
-"homepage": ""
+  "name": "PocketBot",
+  "version": "1.0.0",
+  "description": "NodeJs server for PocketBot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WhatMonday/NodeJs_server"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/file-type": "^5.2.1",
+    "@types/node": "^7.0.31",
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
+    "file-type": "^7.2.0"
+  }
 }
