@@ -1,14 +1,14 @@
 {
-"name": "PocketBot server",
+"name": "PocketBot",
 "version": "1.0.0",
-"description": "node app",
+"description": "NodeJs server for PocketBot",
 "main": "index.js",
 "scripts": {
 "start": "node index.js"
 },
 "repository": {
 "type": "git",
-"url": ""
+"url": "https://github.com/WhatMonday/NodeJs_server"
 },
 "author": "",
 "license": "",
