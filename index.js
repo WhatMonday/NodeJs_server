@@ -10,30 +10,20 @@ const config = {
 
 const client = new line.Client(config);
 app.post('/webhook', line.middleware(config), (req, res) => {
-    Promise
-        .all(req.body.events.map(handleEvent))
-        .then((result) => res.json(result));
-});
-
-function handleEvent(event) {
-
-    console.log(event);
-    if (event.type === 'message' && event.message.type === 'text') {
-        //handleMessageEvent(event);
-        let triggerMsg = event.message.text.toUpperCase()
-        if (triggerMsg === 'CHECK,0') {
-            var msg = {
-                type: 'text',
-                text: 'Hello World'
-            };
-
-            return client.replyMessage(event.replyToken, msg);
-        }
-        //return Promise.resolve('ok');
-    } else {
-        return Promise.resolve(null);
-    }
+  Promise
+      .all(req.body.events.map(handleEvent))
+      .catch((e) => {
+          console.log(e)
+      })
+  return res.json({status: 'ok'})
 }
+
+// File:handler/index.js
+// Main logic to process event based on trigger message
+function handleEvent(event) {
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    return Promise.resolve('ok');
+  }
 
 /*function handleMessageEvent(event) {
     var msg = {
