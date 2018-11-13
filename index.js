@@ -9,30 +9,8 @@ const config = {
 }
 
 app.post('/webhook', middleware(config), (req, res) => {
-    Promise
-        .all(req.body.events.map(handleEvent))
-        .then((result) => res.json(result));
-});
-
-function handleEvent(event) {
-
-    console.log(event);
-    if (event.type === 'message' && event.message.type === 'text') {
-        handleMessageEvent(event);
-    } else {
-        return Promise.resolve(null);
-    }
-}
-
-function handleMessageEvent(event) {
-    var msg = {
-        type: 'text',
-        text: 'Hello World'
-    };
-
-    return client.replyMessage(event.replyToken, msg);
-}
-
+  res.json(req.body.events) // req.body will be webhook event object
+})
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
