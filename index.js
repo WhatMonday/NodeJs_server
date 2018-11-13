@@ -5,13 +5,33 @@ const app = express()
 
 const config = {
   channelAccessToken: process.env.channelAccessToken,
-  channelSecret: process.env.channelSecret
-  //channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
+  channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
 }
 
 app.post('/webhook', middleware(config), (req, res) => {
-  res.json(req.body.events) // req.body will be webhook event object
-})
+    Promise
+        .all(req.body.events.map(handleEvent))
+        .then((result) => res.json(result));
+});
+
+function handleEvent(event) {
+
+    console.log(event);
+    if (event.type === 'message' && event.message.type === 'text') {
+        handleMessageEvent(event);
+    } else {
+        return Promise.resolve(null);
+    }
+}
+
+function handleMessageEvent(event) {
+    var msg = {
+        type: 'text',
+        text: 'Hello World'
+    };
+
+    return client.replyMessage(event.replyToken, msg);
+}
 
 const port = process.env.PORT;
 app.listen(port, () => {
