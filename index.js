@@ -4,8 +4,8 @@ const express = require('express');
 const port = process.env.PORT || 3000;
 // create LINE SDK config from env variables
 const config = {
-  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
-  channelSecret: process.env.CHANNEL_SECRET,
+    channelAccessToken: process.env.channelAccessToken,
+    channelSecret: process.env.channelSecret
 };
 
 // create LINE SDK client
@@ -18,6 +18,7 @@ const app = express();
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
+  res.statusCode = 200;
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
