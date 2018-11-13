@@ -12,7 +12,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
         .catch((e) => {
             console.log(e)
         })
-    return res.json({ status: 'ok' })
+    //return res.json({ status: 'ok' })
 });
 function handleEvent(event) {
   var echo;
