@@ -15,7 +15,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
     //return res.json({ status: 'ok' })
 });
 function handleEvent(event) {
-  var echo;
+ /* var echo;
   if (event.type === 'message' || event.message.type === 'text') {
     echo = { 
         type: 'text', 
@@ -28,6 +28,7 @@ function handleEvent(event) {
     };
   }
 return client.replyMessage(event.replyToken, echo); 
+*/
 }
 const port = process.env.PORT;
 app.listen(port, () => {
