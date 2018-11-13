@@ -25,7 +25,7 @@ function handleEvent(event) {
   var  echo = { 
         type: 'text', 
         text: event.message.text 
-//    };
+    };
 //  }
 return client.replyMessage(event.replyToken, echo); 
 
