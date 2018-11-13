@@ -21,14 +21,14 @@ function handleEvent(event) {
         type: 'text', 
         text: 'Unknow input'
     };
-  }else{
-    echo = { 
+  }else{*/
+  var  echo = { 
         type: 'text', 
         text: event.message.text 
-    };
-  }
+//    };
+//  }
 return client.replyMessage(event.replyToken, echo); 
-*/
+
 }
 const port = process.env.PORT;
 app.listen(port, () => {
