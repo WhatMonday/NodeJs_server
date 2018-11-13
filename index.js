@@ -13,7 +13,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
             console.log(e)
         })
     return res.json({ status: 'ok' })
-}
+});
 function handleEvent(event) {
 }
 const port = process.env.PORT;
