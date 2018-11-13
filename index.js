@@ -46,11 +46,11 @@ function handleEvent(event) {
   echo = { 
     type: 'text', 
     text: event.message.text 
-  };
-
-  // use reply API
-  return client.replyMessage(event.replyToken, echo);
+    };
   }
+  
+  // use reply API
+  return client.replyMessage(event.replyToken, echo); 
 }
 const port = process.env.PORT;
 app.listen(port, () => {
