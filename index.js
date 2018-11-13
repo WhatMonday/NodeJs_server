@@ -33,18 +33,25 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
+  var echo;
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
-    return Promise.resolve(null);
-  }
+      echo = { 
+    type: 'text', 
+    text: 'Unknow input'
+  };
+  }else{
 
   // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
+  echo = { 
+    type: 'text', 
+    text: event.message.text 
+  };
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
+  }
 }
-
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
