@@ -1,0 +1,19 @@
+{
+"name": "PocketBot server",
+"version": "1.0.0",
+"description": "node app",
+"main": "index.js",
+"scripts": {
+"start": "node index.js"
+},
+"repository": {
+"type": "git",
+"url": ""
+},
+"author": "",
+"license": "",
+"bugs": {
+"url": ""
+},
+"homepage": ""
+}
