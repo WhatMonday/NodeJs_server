@@ -7,8 +7,15 @@ const config = {
   channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
 }
 app.post('/webhook', line.middleware(config), (req, res) => {
-  res.json(req.body.events) // req.body will be webhook event object
-});
+ Promise
+        .all(req.body.events.map(handleEvent))
+        .catch((e) => {
+            console.log(e)
+        })
+    return res.json({ status: 'ok' })
+};
+function handleEvent(event) {
+};
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
