@@ -29,7 +29,7 @@ const event = req.body.events[0];
         //text:  input
         microgear.chat('node1', message);
         console.log(message);
-      });
+      //});
     }else{
       client.replyMessage(event.replyToken, {
         type: 'text',
