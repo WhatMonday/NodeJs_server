@@ -7,20 +7,23 @@ const config = {
   channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
 }
 const client = new Client(config);
+//netpie microgear
 var MicroGear = require('microgear');
+const APPID = 'PocketBot';
+const KEY = 'E8d0mBCaYxpb6FW';
+const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
+var microgear = MicroGear.create({ key : KEY, secret : SECRET });
+microgear.connect(APPID);
+
+
+
+
+
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
     var message = event.replyToken+','+event.message.text;
-    var request = require("request");
-    var options = { method: 'PUT',
-          url: 'https://api.netpie.io/microgear/PocketBot/node-red',
-          qs: { retain: '', auth: 'E8d0mBCaYxpb6FW:XxnxMl4kZ51vWCli1rQpEtib7' },
-          body: message };
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-      });
+  microgear.chat('node-red', message);
         console.log(message);
     }else{
       client.replyMessage(event.replyToken, {
@@ -33,3 +36,4 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
+
