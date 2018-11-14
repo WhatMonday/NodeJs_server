@@ -37,9 +37,9 @@ microgear.connect(APPID);
 microgear.on('connected', function() { console.log('Connected to NETPIE');});
 // message handler
 microgear.on('message', function(topic,body) {
-  /*console.log('incoming : '+topic+' : '+body);
-  const equipment = ["D0","D1","D2","D3","D4","D5","D6","D7","D8"];
-  var str = body.split(",");
+  console.log('incoming : '+topic+' : '+body);
+  const equipment = ['D0','D1','D2','D3','D4','D5','D6','D7'];
+  var str = body.split(',');
   var user = str[0];
     console.log(user);
   var pin = parseInt(str[1], 10);
@@ -48,25 +48,25 @@ microgear.on('message', function(topic,body) {
     console.log(state);
   var cmd = str[3];
     console.log(cmd);
-  var msg = "";
-  var action = "";
+  var msg = '';
+  var action = '';
     if (cmd === 'check'){
       if (state === 'on'){
-        msg = equipment[pin] + " ถูกเปิดอยู่";
-        action = "off";
+        msg = equipment[pin] + ' ถูกเปิดอยู่';
+        action = 'off';
       }else if (state === 'off'){
-        msg = equipment[pin] + " ถูกปิดอยู่";
-        action = "on";
+        msg = equipment[pin] + ' ถูกปิดอยู่';
+        action = 'on';
       }
       //create rich menu for user
     }else{
       if (cmd ==='on'){
-        msg = equipment[pin] +" ถูกเปิดแล้ว";
+        msg = equipment[pin] +' ถูกเปิดแล้ว';
       }else if(cmd === 'off'){
-        msg = equipment[pin] +" ถูกปิดแล้ว";
+        msg = equipment[pin] +' ถูกปิดแล้ว';
       }else{
         msg = "unknow command";
       }
-    }*/
+    }
     client.pushMessage('U7918f36feb5c4b9e4530b3d5ba88e274', { type: 'text',text: 'Hello'})
 });
