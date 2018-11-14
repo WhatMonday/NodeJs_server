@@ -14,7 +14,7 @@ const KEY = 'E8d0mBCaYxpb6FW';
 const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
 var microgear = MicroGear.create({ key : KEY, secret : SECRET });
 microgear.on('connected', function() { console.log('Connected...');
-microgear.setAlias("nodejs");
+microgear.setAlias("nodejs"); });
 microgear.connect(APPID);
 
 app.post('/webhook', line.middleware(config), (req, res) => {
