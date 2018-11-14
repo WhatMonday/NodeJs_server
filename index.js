@@ -7,29 +7,20 @@ const config = {
   channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
 }
 const client = new Client(config);
-//microgear
-const MicroGear = require('microgear');
-/*const APPID = 'PocketBot';
-const KEY = 'E8d0mBCaYxpb6FW';
-const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
-var micro = MicroGear.create({ key : KEY, secret : SECRET });
-micro.on('connected', function() { console.log('Connected...');
-micro.setAlias("nodejs"); });
-micro.connect(APPID);
-*/
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
     var message = event.replyToken+','+event.message.text;
-    //var str = message.split(',');
-    //var command = str[0];
-    //var pin = str[1];
-      //client.replyMessage(event.replyToken, {
-        //type: 'text',
-        //text:  input
-        //micro.chat('node1', message);
+    var request = require("request");
+    var options = { method: 'PUT',
+          url: 'https://api.netpie.io/microgear/PocketBot/node-red',
+          qs: { retain: '', auth: 'E8d0mBCaYxpb6FW:XxnxMl4kZ51vWCli1rQpEtib7' },
+          body: message };
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+      });
         console.log(message);
-      //});
     }else{
       client.replyMessage(event.replyToken, {
         type: 'text',
