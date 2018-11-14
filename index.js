@@ -11,10 +11,8 @@ const client = new Client(config);
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
-    var message = event.userId+','+event.message.text;
-
-
-  microgear.chat('node1', message);
+    var message = event.userId +','+ event.message.text;
+        microgear.chat('node1', message);
         console.log(message);
     }else{
       client.replyMessage(event.replyToken, {
@@ -33,9 +31,11 @@ var MicroGear = require('microgear');
 const APPID = 'PocketBot';
 const KEY = 'E8d0mBCaYxpb6FW';
 const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
-var microgear = MicroGear.create({ key : KEY, secret : SECRET });
+var microgear = MicroGear.create({ key : KEY, secret : SECRET, alias : ALIAS });
 microgear.connect(APPID);
-microgear.on('connected', function() { console.log('Connected to NETPIE'); microgear.setAlias("nodejs");});
+microgear.on('connected', function() { console.log('Connected to NETPIE'); 
+                                      //microgear.setAlias("nodejs");
+                                     });
 
 // message handler
 microgear.on('message', function(topic,body) {
