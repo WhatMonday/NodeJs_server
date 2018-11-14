@@ -37,7 +37,7 @@ microgear.connect(APPID);
 microgear.on('connected', function() { console.log('Connected to NETPIE');});
 // message handler
 microgear.on('message', function(topic,body) {
-  console.log('incoming : '+topic+' : '+body);
+  /*console.log('incoming : '+topic+' : '+body);
   const equipment = ["D0","D1","D2","D3","D4","D5","D6","D7","D8"];
   var str = body.split(",");
   var user = str[0];
@@ -67,6 +67,6 @@ microgear.on('message', function(topic,body) {
       }else{
         msg = "unknow command";
       }
-    }
-    client.pushMessage(user, { type: 'text',text: msg})
+    }*/
+    client.pushMessage('U7918f36feb5c4b9e4530b3d5ba88e274', { type: 'text',text: 'Hello'})
 });
