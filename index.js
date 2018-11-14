@@ -19,6 +19,7 @@ const event = req.body.events[0];
         text: 'Unknow command'
       });
 }
+return res.json({status: 'ok'})
 });
 const port = process.env.PORT;
 app.listen(port, () => {
