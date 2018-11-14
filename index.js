@@ -34,17 +34,35 @@ const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
 const ALIAS = 'nodejs';
 var microgear = MicroGear.create({ key : KEY, secret : SECRET, alias : ALIAS });
 microgear.connect(APPID);
-microgear.on('connected', function() { console.log('Connected to NETPIE'); 
-                                      //microgear.setAlias("nodejs");
-                                     });
-
+microgear.on('connected', function() { console.log('Connected to NETPIE');});
 // message handler
 microgear.on('message', function(topic,body) {
   console.log('incoming : '+topic+' : '+body);
-
-
-
-
-
-
+const equipment = ["D0","D1","D2","D3","D4","D5","D6","D7","D8"];
+  var str = body.split(",");
+  var user = str[0];
+  var pin = str[1];
+  var state = str[2];
+  var cmd = str[3];
+  var msg = "";
+  var action = "";
+    if (cmd === 'check'){
+      if (state === 'on'){
+        msg = equipment + " ถูกเปิดอยู่";
+        action = "off";
+      }else if (state === 'off'){
+        msg = equipment + " ถูกปิดอยู่";
+        action = "on";
+      }
+      //create rich menu for user
+    }else{
+      if (cmd ==='on'){
+        msg = equipment +" ถูกเปิดแล้ว";
+      }else if(cmd === 'off'){
+        msg = equipment +" ถูกปิดแล้ว";
+      }else{
+        msg = "unknow command";
+      }
+    }
+    client.pushMessage(user, { type: 'text',text: msg})
 });
