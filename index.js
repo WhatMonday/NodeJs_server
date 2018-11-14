@@ -31,6 +31,7 @@ var MicroGear = require('microgear');
 const APPID = 'PocketBot';
 const KEY = 'E8d0mBCaYxpb6FW';
 const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
+const ALIAS = 'nodejs';
 var microgear = MicroGear.create({ key : KEY, secret : SECRET, alias : ALIAS });
 microgear.connect(APPID);
 microgear.on('connected', function() { console.log('Connected to NETPIE'); 
