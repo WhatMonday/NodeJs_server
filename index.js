@@ -9,14 +9,14 @@ const config = {
 const client = new Client(config);
 //microgear
 const MicroGear = require('microgear');
-const APPID = 'PocketBot';
+/*const APPID = 'PocketBot';
 const KEY = 'E8d0mBCaYxpb6FW';
 const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
-var microgear = MicroGear.create({ key : KEY, secret : SECRET });
-microgear.on('connected', function() { console.log('Connected...');
-microgear.setAlias("nodejs"); });
-microgear.connect(APPID);
-
+var micro = MicroGear.create({ key : KEY, secret : SECRET });
+micro.on('connected', function() { console.log('Connected...');
+micro.setAlias("nodejs"); });
+micro.connect(APPID);
+*/
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
@@ -27,7 +27,7 @@ const event = req.body.events[0];
       //client.replyMessage(event.replyToken, {
         //type: 'text',
         //text:  input
-        microgear.chat('node1', message);
+        //micro.chat('node1', message);
         console.log(message);
       //});
     }else{
