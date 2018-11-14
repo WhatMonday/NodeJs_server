@@ -11,7 +11,7 @@ const client = new Client(config);
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
-    var message = event.userId +','+ event.message.text;
+    var message = event.source.userId +','+ event.message.text;
         microgear.chat('node1', message);
         console.log(message);
     }else{
