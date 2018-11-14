@@ -13,42 +13,7 @@ const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
     var message = event.replyToken+','+event.message.text;
 
-//======================================================================================================================temp
 
-    var richMenuId = client.createRichMenu({
-        size: { width: 2500, height: 1686 }, // Define size of rich menu
-        selected: true, // Always display
-        name: 'CryptoCurrency Page 2', // rich menu name
-        chatBarText: 'CryptoCurrency', // show to user
-        areas: [ // Area and action of each boundary
-            {
-                bounds: {
-                    x: 0,
-                    y: 0,
-                    width: 833,
-                    height: 843
-                },
-                action: {
-                    type: 'message',
-                    text: 'OMG'
-                }
-            }
-      ]
-    })
-
-    // Step 2: Upload image to Step 1's rich menu id
-    client.setRichMenuImage(richMenuId, fs.createReadStream('./menu-page-2.jpg'))
-var userId = event.userId;
-    return request({
-            method: 'POST',
-            uri: 'https://api.line.me/v2/bot/user/${userId}/richmenu/${config.cryptoPage2RichMenuId}',
-            headers: {
-                Authorization: 'Bearer ${config.channelAccessToken}'
-            },
-            json: true
-        })
-
-//======================================================================================================================temp
   //microgear.chat('node-red', message);
         console.log(message);
     }else{
