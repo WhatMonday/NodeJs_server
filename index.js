@@ -14,7 +14,7 @@ const event = req.body.events[0];
 
 //======================================================================================================================temp
 
-    client.createRichMenu({
+    var richMenuId = client.createRichMenu({
         size: { width: 2500, height: 1686 }, // Define size of rich menu
         selected: true, // Always display
         name: 'CryptoCurrency Page 2', // rich menu name
