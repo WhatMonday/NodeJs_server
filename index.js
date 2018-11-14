@@ -8,7 +8,7 @@ const config = {
 }
 const client = new Client(config);
 //microgear
-const MicroGear = require('microgear');
+const MicroGear = require('./microgear.js');
 /*const APPID = 'PocketBot';
 const KEY = 'E8d0mBCaYxpb6FW';
 const SECRET = 'XxnxMl4kZ51vWCli1rQpEtib7';
