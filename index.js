@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const line = require('@line/bot-sdk');
 const Client = require('@line/bot-sdk').Client;
