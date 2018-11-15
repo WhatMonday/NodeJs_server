@@ -56,7 +56,7 @@ var action = '';
       msg = "unknow command";
     }
   }
-  client.pushMessage('U7918f36feb5c4b9e4530b3d5ba88e274', { type: 'text',text: 'Hello'})
+  client.pushMessage(TOKEN, { type: 'text',text: msg})
 });
 const port = process.env.PORT;
 app.listen(port, () => {
