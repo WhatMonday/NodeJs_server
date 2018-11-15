@@ -33,25 +33,25 @@ return res.json({status: 'ok'})
 app.get('/reply', function(req, res){
 var TOKEN = req.query.token;
 var COMMAND = req.query.command;
-var PIN = req.query.pin;
+var PIN = parseInt(req.query.pin,10);
 var VAL = req.query.val;
 var equipment = ['D0','D1','D2','D3','D4','D5','D6','D7'];
 var msg = '';
 var action = '';
   if (COMMAND === 'check'){
     if (VAL === 'on'){
-      msg = equipment[pin] + ' ถูกเปิดอยู่';
+      msg = equipment[PIN] + ' ถูกเปิดอยู่';
       action = 'off';
     }else if (VAL === 'off'){
-      msg = equipment[pin] + ' ถูกปิดอยู่';
+      msg = equipment[PIN] + ' ถูกปิดอยู่';
       action = 'on';
     }
     //create rich menu for user
   }else{
     if (COMMAND ==='on'){
-      msg = equipment[pin] +' ถูกเปิดแล้ว';
+      msg = equipment[PIN] +' ถูกเปิดแล้ว';
     }else if(COMMAND === 'off'){
-      msg = equipment[pin] +' ถูกปิดแล้ว';
+      msg = equipment[PIN] +' ถูกปิดแล้ว';
     }else{
       msg = "unknow command";
     }
