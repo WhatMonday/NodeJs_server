@@ -9,6 +9,7 @@
   "dependencies": {
     "@line/bot-sdk": "^5.0.0",
     "express": "^4.16.3",
-    "microgear": "^0.8.0"
+    "microgear": "^0.8.0",
+    "unirest": "^0.5.0"
   }
 }
