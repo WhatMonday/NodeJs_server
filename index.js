@@ -30,7 +30,7 @@ const event = req.body.events[0];
 }
 return res.json({status: 'ok'})
 });
-app.post('/reply', function(req, res){
+app.get('/reply', function(req, res){
 var TOKEN = req.query.token;
 var COMMAND = req.query.command;
 var PIN = req.query.pin;
