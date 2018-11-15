@@ -30,6 +30,34 @@ const event = req.body.events[0];
 }
 return res.json({status: 'ok'})
 });
+app.post('/reply', function(req, res){
+var TOKEN = req.query.token;
+var COMMAND = req.query.command;
+var PIN = req.query.pin;
+var STATE = req.query.state;
+var equipment = ['D0','D1','D2','D3','D4','D5','D6','D7'];
+var msg = '';
+var action = '';
+  if (cmd === 'check'){
+    if (state === 'on'){
+      msg = equipment[pin] + ' ถูกเปิดอยู่';
+      action = 'off';
+    }else if (state === 'off'){
+      msg = equipment[pin] + ' ถูกปิดอยู่';
+      action = 'on';
+    }
+    //create rich menu for user
+  }else{
+    if (cmd ==='on'){
+      msg = equipment[pin] +' ถูกเปิดแล้ว';
+    }else if(cmd === 'off'){
+      msg = equipment[pin] +' ถูกปิดแล้ว';
+    }else{
+      msg = "unknow command";
+    }
+  }
+  client.pushMessage('U7918f36feb5c4b9e4530b3d5ba88e274', { type: 'text',text: 'Hello'})
+});
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
