@@ -57,6 +57,7 @@ var action = '';
     }
   }
   client.pushMessage(TOKEN, { type: 'text',text: msg})
+  res.sendStatus(200);
 });
 const port = process.env.PORT;
 app.listen(port, () => {
