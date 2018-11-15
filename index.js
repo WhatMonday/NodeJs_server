@@ -20,8 +20,8 @@ const event = req.body.events[0];
     var req = unirest("PUT", "https://api.netpie.io/microgear/" + APPID + ALIAS);
     req.query({"retain": "","auth": KEY + ":" + SECRET});
     req.send(message);
-    req.end(function (res) {if (res.error) throw new Error(res.error);console.log(res.body);});
-        console.log(message);
+    req.end(function (res) {console.log(res.body);});
+    console.log(message);
     }else{
       client.replyMessage(event.replyToken, {
         type: 'text',
