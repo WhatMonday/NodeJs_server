@@ -57,7 +57,6 @@ var action = '';
     }
   }
   client.pushMessage('U7918f36feb5c4b9e4530b3d5ba88e274', { type: 'text',text: 'Hello'})
-  return res.json({status: 'ok'})
 });
 const port = process.env.PORT;
 app.listen(port, () => {
