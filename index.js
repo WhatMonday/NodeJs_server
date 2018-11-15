@@ -18,7 +18,7 @@ const event = req.body.events[0];
     var KEY = "E8d0mBCaYxpb6FW";
     var SECRET = "XxnxMl4kZ51vWCli1rQpEtib7";
     var req = unirest("PUT", "https://api.netpie.io/microgear/" + APPID + ALIAS);
-    req.query({"auth": KEY + ":" + SECRET});
+    req.query({"retain": "","auth": KEY + ":" + SECRET});
     req.send(message);
     req.end(function (res) {if (res.error) throw new Error(res.error);console.log(res.body);});
         console.log(message);
