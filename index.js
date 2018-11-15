@@ -14,7 +14,7 @@ const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
     var message = event.source.userId +','+ event.message.text;
     var ALIAS = "node1";
-    var APPID = "Pocketbot/";
+    var APPID = "PocketBot/";
     var KEY = "E8d0mBCaYxpb6FW";
     var SECRET = "XxnxMl4kZ51vWCli1rQpEtib7";
     var req = unirest("PUT", "https://api.netpie.io/microgear/" + APPID + ALIAS);
