@@ -35,7 +35,7 @@ var TOKEN = req.query.token;
 var COMMAND = req.query.command;
 var PIN = parseInt(req.query.pin,10);
 var VAL = req.query.val;
-var equipment = ['D0','D1','D2','D3','D4','D5','D6','D7'];
+var equipment = ['IN1','IN2','IN3','IN4','D4','D5','D6','D7'];
 var msg = '';
 var action = '';
   if (COMMAND === 'check'){
