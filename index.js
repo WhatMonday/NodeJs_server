@@ -102,6 +102,12 @@ var action = '';
       richMenuList.forEach((list) => {
         console.log(list.richMenuId)
         client.unlinkRichMenuFromUser(USERID, list.richMenuId)
+      })
+    })
+    client.getRichMenuList()
+    .then(async function(richMenuList){
+      richMenuList.forEach((list) => {
+        console.log(list.richMenuId)
         client.deleteRichMenu(list.richMenuId)
       })
     })
