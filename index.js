@@ -103,7 +103,7 @@ var action = '';
         console.log(list.richMenuId)
         console.log(USERID)
         client.unlinkRichMenuFromUser(USERID, list.richMenuId)
-        client.deleteRichMenu(list.richMenuId)
+        .then(client.deleteRichMenu(list.richMenuId))
       })
     })
     //===================
