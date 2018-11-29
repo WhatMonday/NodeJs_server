@@ -101,6 +101,7 @@ var action = '';
     .then(function(richMenuList){
       richMenuList.map((list) => {
         console.log(list.richMenuId)
+        console.log(USERID)
         client.unlinkRichMenuFromUser(USERID, list.richMenuId)
         client.deleteRichMenu(list.richMenuId)
       })
