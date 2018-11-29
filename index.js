@@ -63,7 +63,7 @@ var action = '';
                    },
                    action: {
                        type: 'message',
-                       text: 'on,0'
+                       text: 'on,'+PIN.toString()
                    }
                },
                {
@@ -75,7 +75,7 @@ var action = '';
                    },
                    action: {
                        type: 'message',
-                       text: 'off,0'
+                       text: 'off,'+PIN.toString()
                    }
                }
          ]
