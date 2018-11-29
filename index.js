@@ -97,14 +97,21 @@ var action = '';
     }
     //delete al rich menu
     var richMenuList;
+    var menuId = [];
     client.getRichMenuList()
     .then(function(richMenuList){
-      richMenuList.forEach(async function(list){
+      richMenuList.forEach((list) => {
         console.log(list.richMenuId)
-        await client.unlinkRichMenuFromUser(USERID, list.richMenuId)
-        await client.deleteRichMenu(list.richMenuId)
+        menuId.push(list.richMenuId);
+        //client.deleteRichMenu(list.richMenuId)
+        //client.unlinkRichMenuFromUser(USERID, list.richMenuId)
       })
     })
+    menuid.forEach((id) =>{
+      client.deleteRichMenu(id)
+      client.unlinkRichMenuFromUser(USERID, id)
+    })
+
     //===================
   }
   client.pushMessage(USERID, { type: 'text',text: msg})
