@@ -107,7 +107,7 @@ var action = '';
         //client.unlinkRichMenuFromUser(USERID, list.richMenuId)
       })
     })
-    menuid.forEach((id) =>{
+    menuId.forEach((id) =>{
       client.deleteRichMenu(id)
       client.unlinkRichMenuFromUser(USERID, id)
     })
