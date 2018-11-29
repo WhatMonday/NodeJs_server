@@ -1,14 +1,14 @@
 const express = require('express');
-const fs = require('fs');
 const app = express();
+const fs = require('fs');
 const line = require('@line/bot-sdk');
 const Client = require('@line/bot-sdk').Client;
-const unirest = require("unirest");
 const config = {
   channelAccessToken: 'dzaOAQEbS4W3KQFaoq2IbC8Z6rxrvk46MkI6tgcmhFRy9amJTG48myOZdg8OuKsex4aKxDgevUajHk9PgtXLR1GTjlFav5brcEKP8bV/o+YqkSeVylPHY+UtfzzNrZO4OT6ZGZSfa3cFvpNMosmuRQdB04t89/1O/w1cDnyilFU=',
   channelSecret: '6a5f9c0a5f70c92c3d64186f9a14ec16'
 }
 const client = new Client(config);
+const unirest = require("unirest");
 app.post('/webhook', line.middleware(config), (req, res) => {
 const event = req.body.events[0];
   if (event.type === 'message' && event.message.type === 'text') {
@@ -31,7 +31,7 @@ const event = req.body.events[0];
 return res.json({status: 'ok'})
 });
 app.get('/reply', function(req, res){
-var TOKEN = req.query.token;
+var USERID = req.query.token;
 var COMMAND = req.query.command;
 var PIN = parseInt(req.query.pin,10);
 var VAL = req.query.val;
@@ -47,6 +47,46 @@ var action = '';
       action = 'on';
     }
     //create rich menu for user
+    var id ="";
+    client.createRichMenu({
+           size: { width: 2500, height: 843 }, // Define size of rich menu
+           selected: true, // Always display
+           name: 'test1', // rich menu name
+           chatBarText: 'test1', // show to user
+           areas: [ // Area and action of each boundary
+               {
+                   bounds: {
+                       x: 0,
+                       y: 0,
+                       width: 1250,
+                       height: 843
+                   },
+                   action: {
+                       type: 'message',
+                       text: 'on,0'
+                   }
+               },
+               {
+                   bounds: {
+                       x: 1251,
+                       y: 0,
+                       width: 2500,
+                       height: 843
+                   },
+                   action: {
+                       type: 'message',
+                       text: 'off,0'
+                   }
+               }
+         ]
+       })
+    .then(async function(richMenuId){
+      id = richMenuId;
+      console.log(id);
+      var result = await client.setRichMenuImage(id, fs.createReadStream('ButtonMenu.png'))
+      result = await client.linkRichMenuToUser(USERID, id)
+    })
+    //=========================
   }else{
     if (COMMAND ==='on'){
       msg = equipment[PIN] +' ถูกเปิดแล้ว';
@@ -55,8 +95,19 @@ var action = '';
     }else{
       msg = "unknow command";
     }
+    //delete al rich menu
+    var richMenuList;
+    client.getRichMenuList()
+    .then(function(richMenuList){
+      richMenuList.forEach((list) => {
+        console.log(list.richMenuId)
+        result = await client.deleteRichMenu(list.richMenuId)
+        //result = await client.linkRichMenuToUser(USERID, id)
+      })
+    })
+    //===================
   }
-  client.pushMessage(TOKEN, { type: 'text',text: msg})
+  client.pushMessage(USERID, { type: 'text',text: msg})
   res.sendStatus(200);
 });
 const port = process.env.PORT;
