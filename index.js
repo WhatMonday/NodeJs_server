@@ -101,9 +101,8 @@ var action = '';
     .then(function(richMenuList){
       richMenuList.forEach((list) => {
         console.log(list.richMenuId)
-        client
-        .unlinkRichMenuFromUser(USERID, list.richMenuId)
-        .deleteRichMenu(list.richMenuId)
+        client.unlinkRichMenuFromUser(USERID, list.richMenuId)
+        //client.deleteRichMenu(list.richMenuId)
       })
     })
     //===================
