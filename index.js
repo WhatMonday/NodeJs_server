@@ -99,11 +99,11 @@ var action = '';
     var richMenuList;
     client.getRichMenuList()
     .then(function(richMenuList){
-      richMenuList.map((list) => {
+      richMenuList.forEach((list) => {
         console.log(list.richMenuId)
         console.log(USERID)
         client.unlinkRichMenuFromUser(USERID, list.richMenuId)
-        .then(client.deleteRichMenu(list.richMenuId))
+        //client.deleteRichMenu(list.richMenuId)
       })
     })
     //===================
