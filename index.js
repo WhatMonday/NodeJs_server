@@ -97,14 +97,12 @@ var action = '';
     }
     //delete al rich menu
     var richMenuList;
-    var menuId = [];
     client.getRichMenuList()
     .then(function(richMenuList){
-      richMenuList.forEach((list) => {
+      richMenuList.map((list) => {
         console.log(list.richMenuId)
-        menuId.push(list.richMenuId);
-        //client.deleteRichMenu(list.richMenuId)
         client.unlinkRichMenuFromUser(USERID, list.richMenuId)
+        client.deleteRichMenu(list.richMenuId)
       })
     })
     //===================
