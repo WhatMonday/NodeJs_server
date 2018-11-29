@@ -101,7 +101,7 @@ var action = '';
     .then(function(richMenuList){
       richMenuList.forEach((list) => {
         console.log(list.richMenuId)
-        result = await client.deleteRichMenu(list.richMenuId)
+        client.deleteRichMenu(list.richMenuId)
         //result = await client.linkRichMenuToUser(USERID, id)
       })
     })
