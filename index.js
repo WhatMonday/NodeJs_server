@@ -108,10 +108,10 @@ var action = '';
       })
     })
     menuId.forEach((id) =>{
+      console.log(id)
       client.deleteRichMenu(id)
       client.unlinkRichMenuFromUser(USERID, id)
     })
-
     //===================
   }
   client.pushMessage(USERID, { type: 'text',text: msg})
