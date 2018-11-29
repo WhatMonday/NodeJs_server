@@ -98,11 +98,11 @@ var action = '';
     //delete al rich menu
     var richMenuList;
     client.getRichMenuList()
-    .then(function(richMenuList){
+    .then(async function(richMenuList){
     richMenuList.forEach((list) => {
       console.log(list.richMenuId)
-      client.unlinkRichMenuFromUser(USERID, list.richMenuId)
-      client.deleteRichMenu(list.richMenuId)
+      var r = await client.unlinkRichMenuFromUser(USERID, list.richMenuId)
+      r = await client.deleteRichMenu(list.richMenuId)
   })
 })
     //===================
