@@ -96,16 +96,15 @@ var action = '';
       msg = "unknow command";
     }
     //delete al rich menu
-    var richMenuList;
+  var richMenuList;
     client.getRichMenuList()
     .then(function(richMenuList){
-      richMenuList.forEach((list) => {
-        console.log(list.richMenuId)
-        console.log(USERID)
-        client.unlinkRichMenuFromUser('U7918f36feb5c4b9e4530b3d5ba88e274',list.richMenuId)
-        //client.deleteRichMenu(list.richMenuId)
-      })
-    })
+    richMenuList.forEach((list) => {
+    console.log(list.richMenuId)
+    client.unlinkRichMenuFromUser('U7918f36feb5c4b9e4530b3d5ba88e274', list.richMenuId)
+    client.deleteRichMenu(list.richMenuId)
+  })
+})
     //===================
   }
   client.pushMessage(USERID, { type: 'text',text: msg})
