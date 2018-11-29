@@ -51,8 +51,8 @@ var action = '';
     client.createRichMenu({
            size: { width: 2500, height: 843 }, // Define size of rich menu
            selected: true, // Always display
-           name: 'button', // rich menu name
-           chatBarText: 'Button', // show to user
+           name: 'test1', // rich menu name
+           chatBarText: 'test1', // show to user
            areas: [ // Area and action of each boundary
                {
                    bounds: {
@@ -101,8 +101,8 @@ var action = '';
     .then(function(richMenuList){
       richMenuList.forEach((list) => {
         console.log(list.richMenuId)
+        client.unlinkRichMenuFromUser(USERID, list.richMenuId)
         client.deleteRichMenu(list.richMenuId)
-        //result = await client.linkRichMenuToUser(USERID, id)
       })
     })
     //===================
