@@ -99,12 +99,12 @@ var action = '';
     var richMenuList;
     client.getRichMenuList()
     .then(function(richMenuList){
-      richMenuList.forEach((list) => {
-        console.log(list.richMenuId)
-        client.unlinkRichMenuFromUser(USERID, list.richMenuId)
-        client.deleteRichMenu(list.richMenuId)
-      })
-    })
+    richMenuList.forEach((list) => {
+      console.log(list.richMenuId)
+      client.unlinkRichMenuFromUser(USERID, list.richMenuId)
+      client.deleteRichMenu(list.richMenuId)
+  })
+})
     //===================
   }
   client.pushMessage(USERID, { type: 'text',text: msg})
