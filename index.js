@@ -95,16 +95,22 @@ var action = '';
     }else{
       msg = "unknow command";
     }
+    // unlink richmenu
+      var req = unirest("DELETE", "https://api.line.me/v2/bot/user/"+ USERID +"/richmenu");
+      req.headers({"Authorization": "Bearer " + config.channelAccessToken});
+      req.send(message);
+      req.end(function (res) {console.log(res.body);});
+      console.log(message);
+    //================
     //delete al rich menu
-  var richMenuList;
+    var richMenuList;
     client.getRichMenuList()
     .then(function(richMenuList){
-    richMenuList.forEach((list) => {
-    console.log(list.richMenuId)
-    client.unlinkRichMenuFromUser('U7918f36feb5c4b9e4530b3d5ba88e274', list.richMenuId)
-    client.deleteRichMenu(list.richMenuId)
-  })
-})
+      richMenuList.forEach((list) => {
+        console.log(list.richMenuId)
+        client.deleteRichMenu(list.richMenuId)
+      })
+    })
     //===================
   }
   client.pushMessage(USERID, { type: 'text',text: msg})
