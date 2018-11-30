@@ -98,9 +98,8 @@ var action = '';
     // unlink richmenu
       var req = unirest("DELETE", "https://api.line.me/v2/bot/user/"+ USERID +"/richmenu");
       req.headers({"Authorization": "Bearer " + config.channelAccessToken});
-      req.send(message);
+      req.send();
       req.end(function (res) {console.log(res.body);});
-      console.log(message);
     //================
     //delete al rich menu
     var richMenuList;
